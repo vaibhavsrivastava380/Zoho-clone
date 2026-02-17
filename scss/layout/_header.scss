@@ -1,0 +1,133 @@
+@import "../abstract/variables";
+
+
+
+.header {
+    background-color: $color-bg-dark;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    &__left {
+        display: flex;
+        gap: 28px;
+        height: 100%;
+        align-items: center;
+
+        div {
+            color: $color-text-dim;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+
+            &:hover {
+                color: $color-text-white;
+            }
+        }
+
+        &--data {
+            color: $color-text-white !important;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: $color-primary;
+                border-radius: 4px 4px 0 0;
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        // Handling the user's nested structure
+        .header__right {
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+
+                // For icons that use stroke
+                circle,
+                path,
+                rect,
+                line {
+                    stroke-width: 1.5px;
+                }
+            }
+
+            // The plus icon (first child in the right section)
+            &:first-child {
+                padding: 0;
+                margin-right: 15px;
+                background-color: $color-text-white; // Shows through the hole in the SVG
+                border-radius: 4px;
+                line-height: 0; // prevent extra height
+
+                svg {
+                    width: 34px;
+                    height: 34px;
+                    display: block;
+                    // The fill is already defined in the SVG path by the user
+                }
+            }
+
+            // Notification icon might need a badge (optional, based on image)
+            &:nth-child(3) {
+                position: relative;
+
+                &::before {
+                    content: '1';
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    background-color: $color-red;
+                    color: white;
+                    font-size: 10px;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    border: 2px solid $color-bg-dark;
+                }
+            }
+        }
+    }
+}
+
+.profile__photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #eee; // fallback
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
