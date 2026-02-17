@@ -1,0 +1,107 @@
+@import "../abstract/variables";
+
+.upcoming,
+.past {
+    background-color: #fff;
+    border: 1px solid #e1e7ec;
+    border-radius: 8px;
+    margin: 24px;
+    padding: 0;
+    overflow: hidden;
+    font-family: $font-main;
+
+    &__filter {
+        padding: 16px 20px;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            padding: 8px 32px 8px 16px;
+            border: 1px solid #e1e7ec;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            background-color: #fff;
+            cursor: pointer;
+            font-family: inherit;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236a7181' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            transition: border-color 0.2s;
+
+            &:hover,
+            &:focus {
+                border-color: $color-primary;
+                outline: none;
+            }
+        }
+    }
+
+    &__content {
+        max-height: 300px;
+        overflow-y: auto;
+
+        // Custom scrollbar
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #bdc3d1;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #a8b0c1;
+        }
+    }
+}
+
+// Global class for dynamic rows added via JS
+.list-item {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr; // 3 columns
+    padding: 16px 24px;
+    border-bottom: 1px solid #f9f9f9;
+    align-items: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #f8f9fa;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &__date {
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+    }
+
+    &__event {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: #333;
+
+       
+    }
+
+    &__status {
+        text-align: right;
+        font-size: 13px;
+        color: #888;
+    }
+}
+

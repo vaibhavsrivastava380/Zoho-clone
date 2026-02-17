@@ -1,0 +1,142 @@
+@import "../abstract/variables";
+
+.leave-box {
+    background-color: #f5f7f9;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    font-family: $font-main;
+
+    &>div {
+        background-color: #fff;
+        border: 1px solid #e1e7ec;
+        border-radius: 8px;
+        flex: 1;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .box__title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .box__svg {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+
+    .box__available,
+    .box__booked {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: #616161;
+        padding-top: 12px;
+        position: relative;
+
+        &::after {
+            font-weight: 500;
+            color: #333;
+        }
+    }
+
+    .box__booked {
+        margin-top: 8px;
+
+       
+    }
+
+    // specific card styling
+    &__compoff {
+        .box__title {
+            // Transform "compoff" text
+            visibility: hidden;
+            height: 20px;
+
+            &::before {
+                content: 'Compensatory Off';
+                visibility: visible;
+                display: block;
+            }
+        }
+
+        .box__svg {
+            background-color: #f1f8e9;
+
+            
+        }
+
+        .box__available::after {
+            content: '0';
+        }
+
+        .box__booked::after {
+            content: '0';
+        }
+    }
+
+    &__pto {
+        .box__title {
+            visibility: hidden;
+            height: 20px;
+
+            &::before {
+                content: 'Leave Without Pay';
+                visibility: visible;
+                display: block;
+            }
+        }
+
+        .box__svg {
+            background-color: #feebeb;
+
+           
+        }
+
+        .box__available {
+            border-top: 1px solid #f0f0f0;
+            visibility: hidden; // PTO card in image has no "Available" row label, just a line
+        }
+
+        .box__booked::after {
+            content: '0';
+        }
+    }
+
+    &__mday {
+        .box__svg {
+            background-color: #e1f5fe;
+
+            
+        }
+
+        .box__available::after {
+            content: '1';
+            color: #4caf50 !important;
+            font-weight: 600;
+        }
+
+        .box__booked::after {
+            content: '0';
+        }
+    }
+}
