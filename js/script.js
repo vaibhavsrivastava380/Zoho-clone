@@ -1,6 +1,6 @@
 const leaves = [];
 
-const INITIAL_BALANCES = {
+const defaultBalances = {
     compOff: { available: 24, booked: 0 },
     pto: { available: 15, booked: 0 },
     mDay: { available: 1, booked: 0 }
@@ -28,7 +28,7 @@ const HOLIDAYS_DATA = [
 
 function initBalances() {
     if (!localStorage.getItem('leaveBalances')) {
-        localStorage.setItem('leaveBalances', JSON.stringify(INITIAL_BALANCES));
+        localStorage.setItem('leaveBalances', JSON.stringify(defaultBalances));
     } else {
         const balances = JSON.parse(localStorage.getItem('leaveBalances'));
         const appliedDates = JSON.parse(localStorage.getItem('appliedLeaveDates')) || [];
@@ -55,8 +55,6 @@ function initBalances() {
 function updateBalanceUI() {
     const balances = JSON.parse(localStorage.getItem('leaveBalances'));
     const appliedDates = JSON.parse(localStorage.getItem('appliedLeaveDates')) || [];
-    if (!balances) return;
-
     const updates = [
         { id: 'compOffAvailable', val: balances.compOff.available },
         { id: 'compOffBooked', val: balances.compOff.booked },
@@ -68,7 +66,7 @@ function updateBalanceUI() {
 
     updates.forEach(u => {
         const el = document.getElementById(u.id);
-        if (el) el.innerText = u.val;
+        el.innerText = u.val;
     });
 
     const totalBooked = appliedDates.reduce((acc, curr) => {
@@ -80,7 +78,7 @@ function updateBalanceUI() {
     }, 0);
 
     const totalBookedEl = document.getElementById('totalLeaveBooked');
-    if (totalBookedEl) totalBookedEl.innerText = totalBooked;
+    totalBookedEl.innerText = totalBooked;
 }
 
 function updateBalance(leaveType, days, startDate, endDate) {
@@ -116,17 +114,16 @@ const closeModal = document.getElementById("closeModal");
 const cancelModal = document.getElementById("cancelModal");
 const leaveForm = document.getElementById("leaveForm");
 
-if (applyLeaveBtn) {
-    applyLeaveBtn.addEventListener("click", () => {
-        modalOverlay.classList.add("active");
-        setupDateConstraints();
-    });
-}
+
+applyLeaveBtn.addEventListener("click", () => {
+    modalOverlay.classList.add("active");
+    setupDateConstraints();
+});
+
 
 function setupDateConstraints() {
     const startDateInput = document.getElementById("startDate");
     const endDateInput = document.getElementById("endDate");
-    if (!startDateInput || !endDateInput) return;
 
     const today = new Date();
 
@@ -144,11 +141,11 @@ function setupDateConstraints() {
     endDateInput.setAttribute("max", maxStr);
 }
 function hideModal() { modalOverlay.classList.remove("active"); }
-if (closeModal) closeModal.addEventListener("click", hideModal);
-if (cancelModal) cancelModal.addEventListener("click", hideModal);
+closeModal.addEventListener("click", hideModal);
+cancelModal.addEventListener("click", hideModal);
 window.addEventListener("click", (e) => { if (e.target === modalOverlay) hideModal(); });
 
-if (leaveForm) {
+
     leaveForm.addEventListener("submit", async function (e) {
         e.preventDefault();
         const leaveType = document.getElementById("leaveType").value;
@@ -159,7 +156,7 @@ if (leaveForm) {
         const reason = document.getElementById("reason").value;
 
         if (isHalfDay && startDateVal !== endDateVal) {
-            alert("Half day can only be applied when start and end dates are the same.");
+            alert("How can you apply half day for so many days ???.");
             return;
         }
 
@@ -222,7 +219,7 @@ if (leaveForm) {
             submitBtn.innerText = "Submit";
         }
     });
-}
+
 
 function renderAllData(filterType = 'all', section = 'both') {
     const holidays = JSON.parse(localStorage.getItem('localHolidays')) || [];
