@@ -1,0 +1,149 @@
+@import "../abstract/mixins";
+
+.leave-box {
+    background-color: $color-bg-base;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    font-family: $font-main;
+
+    @include tablet {
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    &>div {
+        background-color: $color-bg-white;
+        border: 1px solid $color-border;
+        border-radius: 8px;
+        flex: 1;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: $shadow-sm;
+
+        @include tablet {
+            min-width: calc(50% - 10px);
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    .box__title {
+        font-size: 16px;
+        font-weight: 600;
+        color: $color-text-main;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .box__svg {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+
+    .box__available,
+    .box__booked {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: $color-text-muted;
+        padding-top: 12px;
+
+        span {
+            font-weight: 500;
+            color: $color-text-main;
+        }
+    }
+
+    .box__booked {
+        margin-top: 8px;
+
+
+    }
+
+    &__compoff {
+        .box__title {
+            visibility: hidden;
+            height: 20px;
+
+            &::before {
+                content: 'Compensatory Off';
+                visibility: visible;
+                display: block;
+            }
+        }
+
+        .box__svg {
+            background-color: $color-accent-green;
+        }
+
+        .box__available {
+            border-top: 1px solid $color-border;
+        }
+    }
+
+    &__pto {
+        .box__title {
+            visibility: hidden;
+            height: 20px;
+
+            &::before {
+                content: 'Personal Time Off';
+                visibility: visible;
+                display: block;
+            }
+        }
+
+        .box__svg {
+            background-color: $color-accent-red;
+        }
+
+        .box__available {
+            border-top: 1px solid $color-border;
+        }
+    }
+
+
+
+    &__mday {
+        .box__title {
+            visibility: hidden;
+            height: 20px;
+
+            &::before {
+                content: 'My Day Off';
+                visibility: visible;
+                display: block;
+            }
+        }
+
+        .box__svg {
+            background-color: $color-accent-blue;
+        }
+
+        .box__available {
+            border-top: 1px solid $color-border;
+        }
+    }
+}

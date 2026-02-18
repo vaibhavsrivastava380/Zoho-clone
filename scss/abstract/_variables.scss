@@ -1,6 +1,26 @@
 $color-primary: #0088ff;
-$color-bg-dark: #2c3143;
+$color-dark: #2c3143;
+$color-danger: #ff4d4d;
+
+$color-bg-base: #f5f7f9;
+$color-bg-white: #ffffff;
+$color-bg-hover: #f8f9fa;
+
+$color-text-main: #333333;
+$color-text-muted: #6a7181;
+$color-text-light: #a8b0c1;
 $color-text-white: #ffffff;
-$color-text-dim: #a8b0c1;
-$color-red: #ff4d4d;
+
+$color-border: #e1e7ec;
+
+$color-accent-green: #f1f8e9;
+$color-accent-red: #feebeb;
+$color-accent-blue: #e1f5fe;
+
+$color-overlay: rgba(0, 0, 0, 0.4);
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+$shadow-md: 0 4px 20px rgba(0, 0, 0, 0.2);
+
 $font-main: sans-serif;
+$mobile: 767px;
+$tablet: 1024px;

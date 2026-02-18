@@ -1,0 +1,102 @@
+@import "../abstract/mixins";
+
+.apply_leave {
+    background-color: $color-bg-base;
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+    font-family: $font-main;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 15px;
+        align-items: flex-start;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: $color-text-muted;
+        font-size: 14px;
+        font-weight: 500;
+
+        @include mobile {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            &:first-child::after {
+                content: ' | ';
+                margin-left: 8px;
+                color: $color-border;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+        }
+
+        strong {
+            color: $color-text-main;
+            font-weight: 600;
+        }
+    }
+
+    &__mid {
+        display: flex;
+        align-items: center;
+        background-color: $color-bg-white;
+        border: 1px solid $color-border;
+        border-radius: 4px;
+        padding: 6px 16px;
+        color: $color-text-muted;
+        font-size: 14px;
+        font-weight: 500;
+        gap: 10px;
+        position: relative;
+
+        @include mobile {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        @include mobile {
+            width: 100%;
+
+            button {
+                width: 100%;
+            }
+        }
+
+        button {
+            background-color: $color-primary;
+            color: $color-text-white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: darken($color-primary, 5%);
+            }
+        }
+    }
+}
