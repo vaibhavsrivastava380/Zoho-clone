@@ -1,9 +1,9 @@
 @import "../abstract/variables";
-
+@import "../abstract/mixins";
 
 
 .header {
-    background-color: $color-bg-dark;
+    background-color: $color-dark;
     height: 55px;
     display: flex;
     justify-content: space-between;
@@ -11,14 +11,23 @@
     padding: 0 24px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
+    @include mobile {
+        padding: 0 12px;
+        height: 50px;
+    }
+
     &__left {
         display: flex;
         gap: 28px;
         height: 100%;
         align-items: center;
 
+        @include mobile {
+            gap: 15px;
+        }
+
         div {
-            color: $color-text-dim;
+            color: $color-text-light;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -28,6 +37,10 @@
             position: relative;
             transition: all 0.2s ease;
             letter-spacing: 0.3px;
+
+            @include mobile {
+                font-size: 13px;
+            }
 
             &:hover {
                 color: $color-text-white;
@@ -55,7 +68,10 @@
         align-items: center;
         gap: 12px;
 
-        // Handling the user's nested structure
+        @include mobile {
+            gap: 5px;
+        }
+
         .header__right {
             padding: 8px;
             display: flex;
@@ -64,40 +80,39 @@
             cursor: pointer;
             transition: opacity 0.2s;
 
-            &:hover {
-                opacity: 0.8;
-            }
+            @include mobile {
+                padding: 4px;
 
-            svg {
-                width: 20px;
-                height: 20px;
-
-                // For icons that use stroke
-                circle,
-                path,
-                rect,
-                line {
-                    stroke-width: 1.5px;
+                &:nth-child(2) {
+                    display: none;
                 }
             }
 
-            // The plus icon (first child in the right section)
+
+
             &:first-child {
                 padding: 0;
                 margin-right: 15px;
-                background-color: $color-text-white; // Shows through the hole in the SVG
+                background-color: $color-text-white;
                 border-radius: 4px;
-                line-height: 0; // prevent extra height
+                line-height: 0;
+
+                @include mobile {
+                    margin-right: 8px;
+                }
 
                 svg {
                     width: 34px;
                     height: 34px;
                     display: block;
-                    // The fill is already defined in the SVG path by the user
+
+                    @include mobile {
+                        width: 28px;
+                        height: 28px;
+                    }
                 }
             }
 
-            // Notification icon might need a badge (optional, based on image)
             &:nth-child(3) {
                 position: relative;
 
@@ -107,7 +122,7 @@
                     top: 5px;
                     right: 5px;
                     background-color: $color-red;
-                    color: white;
+                    color: $color-text-white;
                     font-size: 10px;
                     width: 14px;
                     height: 14px;
@@ -116,7 +131,15 @@
                     align-items: center;
                     justify-content: center;
                     font-weight: bold;
-                    border: 2px solid $color-bg-dark;
+                    border: 2px solid $color-dark;
+
+                    @include mobile {
+                        width: 12px;
+                        height: 12px;
+                        font-size: 8px;
+                        top: 2px;
+                        right: 2px;
+                    }
                 }
             }
         }
@@ -128,6 +151,11 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #eee; // fallback
+    background-color: #eeeeee;
     border: 1px solid rgba(255, 255, 255, 0.1);
+
+    @include mobile {
+        width: 28px;
+        height: 28px;
+    }
 }

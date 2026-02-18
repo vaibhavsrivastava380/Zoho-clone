@@ -1,37 +1,50 @@
-@import "../abstract/variables";
+@import "../abstract/mixins";
 
 .upcoming,
 .past {
-    background-color: #fff;
-    border: 1px solid #e1e7ec;
+    background-color: $color-bg-white;
+    border: 1px solid $color-border;
     border-radius: 8px;
     margin: 24px;
     padding: 0;
     overflow: hidden;
     font-family: $font-main;
 
+    @include mobile {
+        margin: 15px;
+    }
+
     &__filter {
         padding: 16px 20px;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid $color-border;
         display: flex;
         align-items: center;
+
+        @include mobile {
+            padding: 12px 15px;
+        }
 
         select {
             appearance: none;
             -webkit-appearance: none;
             padding: 8px 32px 8px 16px;
-            border: 1px solid #e1e7ec;
+            border: 1px solid $color-border;
             border-radius: 4px;
             font-size: 14px;
             font-weight: 500;
-            color: #333;
-            background-color: #fff;
+            color: $color-text-main;
+            background-color: $color-bg-white;
             cursor: pointer;
             font-family: inherit;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236a7181' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
             transition: border-color 0.2s;
+
+            @include mobile {
+                width: 100%;
+                font-size: 13px;
+            }
 
             &:hover,
             &:focus {
@@ -45,37 +58,41 @@
         max-height: 300px;
         overflow-y: auto;
 
-        // Custom scrollbar
         &::-webkit-scrollbar {
             width: 8px;
         }
 
         &::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: $color-bg-base;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #bdc3d1;
+            background: $color-text-light;
             border-radius: 4px;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-            background: #a8b0c1;
+            background: $color-text-muted;
         }
     }
 }
 
-// Global class for dynamic rows added via JS
 .list-item {
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1fr; // 3 columns
+    grid-template-columns: 1.5fr 2fr 1fr;
     padding: 16px 24px;
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid $color-bg-base;
     align-items: center;
     transition: background-color 0.2s;
 
+    @include mobile {
+        grid-template-columns: 1fr 1fr;
+        padding: 12px 15px;
+        gap: 8px;
+    }
+
     &:hover {
-        background-color: #f8f9fa;
+        background-color: $color-bg-hover;
     }
 
     &:last-child {
@@ -84,8 +101,12 @@
 
     &__date {
         font-size: 14px;
-        color: #333;
+        color: $color-text-main;
         font-weight: 500;
+
+        @include mobile {
+            font-size: 13px;
+        }
     }
 
     &__event {
@@ -93,15 +114,22 @@
         align-items: center;
         gap: 12px;
         font-size: 14px;
-        color: #333;
+        color: $color-text-main;
 
-       
+        @include mobile {
+            font-size: 13px;
+            grid-column: span 2;
+            order: 3;
+        }
     }
 
     &__status {
         text-align: right;
         font-size: 13px;
-        color: #888;
+        color: $color-text-light;
+
+        @include mobile {
+            font-size: 11px;
+        }
     }
 }
-

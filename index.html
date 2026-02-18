@@ -26,7 +26,6 @@
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
                         <title>plus-square</title>
-                        <desc>Created with Sketch Beta.</desc>
                         <defs> </defs>
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
                             sketch:type="MSPage">
@@ -39,7 +38,7 @@
                         </g>
                     </g>
                 </svg></div>
-            <div class="header__right"><svg width="136px" height="136px" viewBox="0 0 24 24" fill="none"
+            <div class="header__right"><svg width="26px" height="26px" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -49,7 +48,7 @@
                             stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </g>
                 </svg></div>
-            <div class="header__right"><svg width="126px" height="126px" viewBox="0 0 24 24" fill="none"
+            <div class="header__right"><svg width="26px" height="26px" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -65,8 +64,7 @@
     </header>
     <section class="apply_leave">
         <div class="apply_leave__left">
-            <span>Leave booked this year:</span>
-            <span>Absent</span>
+            <span>Leave booked this year: <strong id="totalLeaveBooked">0</strong></span>
         </div>
         <div class="apply_leave__mid">
             01 jan 2026-31 dec 2026
@@ -106,6 +104,10 @@
                                     <input type="date" name="entry.1913559081" id="endDate" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="halfDay" name="halfDay">
+                            <label for="halfDay">Half Day</label>
                         </div>
                         <div class="form-group">
                             <label>Team Email ID</label>
@@ -170,8 +172,8 @@
                         </path>
                     </g>
                 </svg></div>
-            <div class="box__available">Available</div>
-            <div class="box__booked">Booked</div>
+            <div class="box__available">Available <span id="compOffAvailable">24</span></div>
+            <div class="box__booked">Booked <span id="compOffBooked">0</span></div>
         </div>
         <div class="leave-box__pto">
             <div class="box__title">Personal Time Off</div>
@@ -211,8 +213,8 @@
                         </path>
                     </g>
                 </svg></div>
-            <div class="box__available">Available</div>
-            <div class="box__booked">Booked</div>
+            <div class="box__available">Available <span id="ptoAvailable">15</span></div>
+            <div class="box__booked">Booked <span id="ptoBooked">0</span></div>
         </div>
         <div class="leave-box__mday">
             <div class="box__title">My Day</div>
@@ -252,8 +254,8 @@
                         </path>
                     </g>
                 </svg></div>
-            <div class="box__available">Available</div>
-            <div class="box__booked">Booked</div>
+            <div class="box__available">Available <span id="mDayAvailable">1</span></div>
+            <div class="box__booked">Booked <span id="mDayBooked">0</span></div>
         </div>
 
     </section>
@@ -270,7 +272,7 @@
     </section>
     <section class="past">
         <div class="past__filter">
-            <select name="Leaves" id="upcomingLeave">
+            <select name="Leaves" id="pastLeave">
                 <option value="all">Past Leave and holiday</option>
                 <option value="uleave">Past Leave</option>
                 <option value="uholiday">Past Holiday</option>
@@ -278,6 +280,7 @@
         </div>
         <div class="past__content"></div>
     </section>
+    <script src="./js/leave-validation.js"></script>
     <script src="./js/script.js"></script>
 </body>
 
